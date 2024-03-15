@@ -1,0 +1,52 @@
+﻿@model School_Management_System.Models.ViewModels.UpdateClassesViewModel;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Update Classes";
+}
+
+<h2 class="my-4">Update Student</h2>
+
+<div class="container">
+    @using (Html.BeginForm("UpdateClasses", "Classes", FormMethod.Post, new { @class = "needs-validation", enctype = "multipart/form-data", novalidate = "novalidate" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.ClassesId)
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control custom-input" placeholder="Enter Name" name="Name" value="@Model.Name" required>
+                <div class="invalid-feedback">Please enter a valid name.</div>
+            </div>
+        </div>
+
+      
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Section</label>
+                <textarea class="form-control custom-input" rows="3" placeholder="Enter Section" name="Address" required>@Model.Section</textarea>
+                <div class="invalid-feedback">Please enter a valid address.</div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary btn-lg">Update Classes</button>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .custom-input {
+        border: 2px solid #007bff;
+    }
+
+        .custom-input:focus {
+            border-color: #0056b3;
+            box-shadow: none;
+        }
+</style>
